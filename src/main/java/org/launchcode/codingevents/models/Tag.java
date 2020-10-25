@@ -13,6 +13,9 @@ import java.util.List;
 @Entity
 public class Tag extends AbstractEntity {
 
+    @ManyToMany(mappedBy = "tags")
+    private List<Event> events = new ArrayList<>();
+
     @Size(min = 1, max = 25)
     @NotBlank
     private String name;
@@ -35,4 +38,7 @@ public class Tag extends AbstractEntity {
         this.name = name;
     }
 
+    public List<Event> getEvents() {
+        return events;
+    }
 }
